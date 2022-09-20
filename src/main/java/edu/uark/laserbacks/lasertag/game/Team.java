@@ -1,19 +1,19 @@
 package edu.uark.laserbacks.lasertag.game;
 
 import edu.uark.laserbacks.lasertag.player.Player;
-import java.util.Set;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import lombok.Data;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Entity
 public class Team {
     @Id @GeneratedValue
     private Integer id;
-    private Integer gameID;
+    @OneToOne
+    private Game game;
+    private String teamName;
     @OneToMany
     private Set<Player> players;
 }
