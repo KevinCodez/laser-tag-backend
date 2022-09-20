@@ -1,11 +1,24 @@
 # Compiled class file
 *.class
+target/
+out/
+.mvn/wrapper/maven-wrapper.jar
+.mvn/timing.properties
+
+# Thumbnails
+._*
 
 # Log file
 *.log
 
-# BlueJ files
-*.ctxt
+# Intellij
+.idea/
+*.iml
+
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
