@@ -1,4 +1,4 @@
-package edu.uark.laserbacks.lasertag.player;
+package edu.uark.laserbacks.player;
 
 import lombok.Data;
 

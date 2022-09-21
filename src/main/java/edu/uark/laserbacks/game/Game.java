@@ -1,4 +1,4 @@
-package edu.uark.laserbacks.lasertag.game;
+package edu.uark.laserbacks.game;
 
 import java.time.LocalDateTime;
 import java.util.Set;

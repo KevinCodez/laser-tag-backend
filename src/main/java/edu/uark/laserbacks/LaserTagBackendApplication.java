@@ -1,4 +1,4 @@
-package edu.uark.laserbacks.lasertag;
+package edu.uark.laserbacks;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

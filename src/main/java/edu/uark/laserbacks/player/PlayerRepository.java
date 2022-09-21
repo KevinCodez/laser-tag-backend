@@ -1,4 +1,4 @@
-package edu.uark.laserbacks.lasertag.player;
+package edu.uark.laserbacks.player;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

@@ -1,7 +1,7 @@
-package edu.uark.laserbacks.lasertag.web;
+package edu.uark.laserbacks.web;
 
-import edu.uark.laserbacks.lasertag.player.Player;
-import edu.uark.laserbacks.lasertag.player.PlayerService;
+import edu.uark.laserbacks.player.Player;
+import edu.uark.laserbacks.player.PlayerService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package edu.uark.laserbacks.lasertag;
+package edu.uark.laserbacks;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

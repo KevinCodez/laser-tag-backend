@@ -1,8 +1,6 @@
-package edu.uark.laserbacks.lasertag.player;
+package edu.uark.laserbacks.player;
 
-import edu.uark.laserbacks.lasertag.web.PlayerForm;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
+import edu.uark.laserbacks.web.PlayerForm;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

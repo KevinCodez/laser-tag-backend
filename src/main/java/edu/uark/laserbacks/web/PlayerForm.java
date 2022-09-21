@@ -1,4 +1,4 @@
-package edu.uark.laserbacks.lasertag.web;
+package edu.uark.laserbacks.web;
 
 import lombok.Data;
 

@@ -1,6 +1,6 @@
-package edu.uark.laserbacks.lasertag.game;
+package edu.uark.laserbacks.game;
 
-import edu.uark.laserbacks.lasertag.player.Player;
+import edu.uark.laserbacks.player.Player;
 import lombok.Data;
 
 import javax.persistence.*;
