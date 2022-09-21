@@ -2,6 +2,8 @@ package edu.uark.laserbacks.web;
 
 import edu.uark.laserbacks.player.Player;
 import edu.uark.laserbacks.player.PlayerService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,12 +24,21 @@ public class PlayerController {
     }
 
     @GetMapping
-    public List<Player> getPlayers(){
+    public List<Player> getPlayers() {
         return service.getAllPlayers();
     }
 
     @GetMapping(path = "/search")
     public Player getPlayerByCodeName(@RequestParam String codeName) {
         return service.getPlayerByCodeName(codeName);
+    }
+
+    @PostMapping
+    public ResponseEntity<Player> newPlayer(@RequestBody PlayerForm playerForm) {
+        Player player = service.createPlayer(playerForm);
+        if (player != null) {
+            return new ResponseEntity<>(player, HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
     }
 }

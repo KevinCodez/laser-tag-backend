@@ -19,19 +19,22 @@ public class PlayerService {
     }
 
     public Player getPlayerByCodeName(String codeName) {
-        return repo.findByCodeName(codeName);
+        return repo.findByCodename(codeName);
     }
 
     public Optional<Player> getPlayerByID(Integer id) {
         return repo.findById(id);
     }
 
-    public void createPlayer(PlayerForm form) {
-        Player player = repo.findByCodeName(form.getCodeName());
+    public Player createPlayer(PlayerForm form) {
+        Player player = repo.findByCodename(form.getCodeName());
         if (player == null){
             player = new Player();
             player.setCodename(form.getCodeName());
+            player.setFirstName(form.getFirstName());
+            player.setLastName(form.getLastName());
             repo.save(player);
         }
+        return player;
     }
 }
