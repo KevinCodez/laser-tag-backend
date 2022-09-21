@@ -1,5 +1,8 @@
 package edu.uark.laserbacks.lasertag.player;
 
+import edu.uark.laserbacks.lasertag.web.PlayerForm;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -23,5 +26,14 @@ public class PlayerService {
 
     public Optional<Player> getPlayerByID(Integer id) {
         return repo.findById(id);
+    }
+
+    public void createPlayer(PlayerForm form) {
+        Player player = repo.findByCodeName(form.getCodeName());
+        if (player == null){
+            player = new Player();
+            player.setCodeName(form.getCodeName());
+            repo.save(player);
+        }
     }
 }
