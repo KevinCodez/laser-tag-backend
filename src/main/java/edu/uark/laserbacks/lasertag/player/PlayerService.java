@@ -32,7 +32,7 @@ public class PlayerService {
         Player player = repo.findByCodeName(form.getCodeName());
         if (player == null){
             player = new Player();
-            player.setCodeName(form.getCodeName());
+            player.setCodename(form.getCodeName());
             repo.save(player);
         }
     }
