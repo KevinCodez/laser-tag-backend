@@ -12,8 +12,10 @@ import javax.persistence.Id;
 public class Player {
     @Id @GeneratedValue
     private Integer id;
+    @Column(length = 30)
     private String firstName;
+    @Column(length = 30)
     private String lastName;
-    @Column(unique = true)
+    @Column(unique = true, length = 30)
     private String codename;
 }

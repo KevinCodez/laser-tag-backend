@@ -19,18 +19,18 @@ public class PlayerController {
     }
 
     @GetMapping(path = "/{id}")
-    public Optional<Player> getById(@PathVariable String id) {
-        return service.getPlayerByID(Integer.valueOf(id));
+    public ResponseEntity<Optional<Player>> getById(@PathVariable String id) {
+        return new ResponseEntity<>(service.getPlayerByID(Integer.valueOf(id)), HttpStatus.OK);
     }
 
     @GetMapping
-    public List<Player> getPlayers() {
-        return service.getAllPlayers();
+    public ResponseEntity<List<Player>> getPlayers() {
+        return new ResponseEntity<>(service.getAllPlayers(),HttpStatus.OK);
     }
 
     @GetMapping(path = "/search")
-    public Player getPlayerByCodeName(@RequestParam String codeName) {
-        return service.getPlayerByCodeName(codeName);
+    public ResponseEntity<Player> getPlayerByCodeName(@RequestParam String codeName) {
+        return new ResponseEntity<>(service.getPlayerByCodeName(codeName), HttpStatus.OK);
     }
 
     @PostMapping
