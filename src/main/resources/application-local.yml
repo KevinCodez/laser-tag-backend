@@ -3,8 +3,6 @@ spring:
     url: jdbc:postgresql://localhost:5432/games
     username: laser
     password: secret
-  jpa:
-    generate-ddl: true
   sql:
     init:
       mode: embedded
