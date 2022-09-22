@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:games
+    username: sa
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+  sql:
+    init:
+      mode: embedded
+      continue-on-error: true
+      data-locations: "classpath:sql"
+
