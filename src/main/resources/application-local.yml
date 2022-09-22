@@ -7,14 +7,7 @@ spring:
     generate-ddl: true
   sql:
     init:
-      mode: always
+      mode: embedded
       continue-on-error: true
       data-locations: "classpath:sql"
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  endpoint:
-    health:
-      show-details: always
+
