@@ -5,7 +5,11 @@ import edu.uark.laserbacks.player.PlayerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
+
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +29,7 @@ public class PlayerController {
 
     @GetMapping
     public ResponseEntity<List<Player>> getPlayers() {
-        return new ResponseEntity<>(service.getAllPlayers(),HttpStatus.OK);
+        return new ResponseEntity<>(service.getAllPlayers(), HttpStatus.OK);
     }
 
     @GetMapping(path = "/search")
@@ -34,10 +38,11 @@ public class PlayerController {
     }
 
     @PostMapping
-    public ResponseEntity<Player> newPlayer(@RequestBody PlayerForm playerForm) {
+    public ResponseEntity<Player> newPlayer(@RequestBody PlayerForm playerForm, UriComponentsBuilder b) {
         Player player = service.createPlayer(playerForm);
         if (player != null) {
-            return new ResponseEntity<>(player, HttpStatus.CREATED);
+            return ResponseEntity.created(
+                    b.path("/player/{id}").buildAndExpand(player.getId()).toUri()).build();
         }
         return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
     }
