@@ -1,13 +1,13 @@
 package edu.uark.laserbacks.game;
 
-import java.time.LocalDateTime;
-import java.util.Set;
+import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
-import lombok.Data;
+import java.time.LocalDateTime;
+import java.util.Set;
 
 @Data
 @Entity

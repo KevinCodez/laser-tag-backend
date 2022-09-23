@@ -1,10 +1,9 @@
 package edu.uark.laserbacks.game;
 
 import edu.uark.laserbacks.player.Player;
+import lombok.Data;
 
 import javax.persistence.*;
-
-import lombok.Data;
 
 @Data
 @Entity
