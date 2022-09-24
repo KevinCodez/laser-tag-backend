@@ -37,4 +37,8 @@ public class PlayerService {
         }
         return player;
     }
+
+    public void deletePlayer(Integer playerId) {
+        repo.deleteById(playerId);
+    }
 }
