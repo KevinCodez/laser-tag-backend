@@ -24,6 +24,12 @@ public class PlayerController {
         return new ResponseEntity<>(service.getPlayerByID(Integer.valueOf(id)), HttpStatus.OK);
     }
 
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable String id) {
+        service.deletePlayer(Integer.valueOf(id));
+        return new ResponseEntity<>(null,HttpStatus.OK);
+    }
+
     @GetMapping
     public ResponseEntity<List<Player>> getPlayers() {
         return new ResponseEntity<>(service.getAllPlayers(), HttpStatus.OK);
