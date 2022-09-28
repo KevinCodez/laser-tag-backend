@@ -9,6 +9,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 import java.util.Optional;
+
 @CrossOrigin
 @RestController
 @RequestMapping(path = "/player")
@@ -27,7 +28,7 @@ public class PlayerController {
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable String id) {
         service.deletePlayer(Integer.valueOf(id));
-        return new ResponseEntity<>(null,HttpStatus.OK);
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
     @GetMapping
