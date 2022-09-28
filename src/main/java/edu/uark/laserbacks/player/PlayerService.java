@@ -31,8 +31,6 @@ public class PlayerService {
         if (player == null){
             player = new Player();
             player.setCodename(form.getCodeName());
-            player.setFirstName(form.getFirstName());
-            player.setLastName(form.getLastName());
             repo.save(player);
         }
         return player;
