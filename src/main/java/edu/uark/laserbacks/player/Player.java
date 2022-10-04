@@ -10,7 +10,8 @@ import javax.persistence.Id;
 @Data
 @Entity
 public class Player {
-    @Id @GeneratedValue
+    @Id
+    @Column(unique = true)
     private Integer id;
     @Column(unique = true, length = 30)
     private String codename;
