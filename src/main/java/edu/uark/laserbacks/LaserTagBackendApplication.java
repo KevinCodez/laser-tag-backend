@@ -9,5 +9,4 @@ public class LaserTagBackendApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(LaserTagBackendApplication.class, args);
 	}
-
 }

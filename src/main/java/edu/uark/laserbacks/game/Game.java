@@ -2,21 +2,23 @@ package edu.uark.laserbacks.game;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
-@Entity
 public class Game {
-    @Id @GeneratedValue
-    private Integer id;
-    private LocalDateTime start_time;
-    private Integer duration;
-    @OneToMany
-    private Set<Team> teams;
-}
+    private Team team1;
+    private Team team2;
 
+    public void setTeams(Team team1, Team team2){
+        this.team1 = team1;
+        this.team2 = team2;
+    }
+    public List<Team> getTeams(){
+        List<Team> teams = new ArrayList<Team>();
+        teams.add(team1);
+        teams.add(team2);
+
+        return teams;
+    }
+}
