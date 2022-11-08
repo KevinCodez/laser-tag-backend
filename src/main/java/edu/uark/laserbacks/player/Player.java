@@ -13,5 +13,6 @@ public class Player {
     @Column(unique = true, length = 30)
     private String codename;
     @Transient
-    private Integer score;
+    private Integer kills;
+    private Integer deaths;
 }

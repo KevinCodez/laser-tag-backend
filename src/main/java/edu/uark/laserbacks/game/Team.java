@@ -8,7 +8,7 @@ import java.util.List;
 @Data
 public class Team {
     private String name;
-    private Integer score;
+    //private Integer score;
     private List<Player> players;
 
     public Team(String name, List<Player> players){
