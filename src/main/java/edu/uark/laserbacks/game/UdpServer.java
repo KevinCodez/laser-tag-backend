@@ -39,8 +39,6 @@ public class UdpServer extends Thread {
                     = new DatagramPacket(inbound, inbound.length);
             incomingSocket.receive(packet);
 
-            // Hit logic
-
             InetAddress address = packet.getAddress();
             int port = packet.getPort();
             packet = new DatagramPacket(inbound, inbound.length, address, port);
@@ -49,6 +47,9 @@ public class UdpServer extends Thread {
                     = new String(packet.getData(), 0, packet.getLength());
             int sender = Integer.parseInt(received.substring(0, received.indexOf(":")));
             int playerHit = Integer.parseInt(received.substring(received.indexOf(":")+1));
+
+            // Score calculations
+
             sendUdpReply(address, playerHit);
             System.out.println(received);
         }

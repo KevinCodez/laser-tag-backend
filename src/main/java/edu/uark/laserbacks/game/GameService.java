@@ -1,6 +1,6 @@
 package edu.uark.laserbacks.game;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import edu.uark.laserbacks.player.Player;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -9,9 +9,28 @@ public class GameService {
 
     public GameService(Game game){
         this.game = game;
-        //game.setTeams();
     }
 
-    // Increment team score method
-    // Increment player score method
+    // Score manipulation methods(these may need to be moved to the game class depending on how frontend data is received)
+    public void incrementPlayerKills(int id){
+        Player player = game.getTeam1().getPlayers().get(id);
+        if(player != null) {
+            player.setKills(player.getKills() + 1);
+        }else{
+            player = game.getTeam2().getPlayers().get(id);
+            if(player != null)
+                player.setKills(player.getKills()+1);
+        }
+    }
+
+    public void incrementPlayerDeaths(int id){
+        Player player = game.getTeam1().getPlayers().get(id);
+        if(player != null){
+            player.setDeaths(player.getDeaths()+1);
+        }else{
+            player = game.getTeam2().getPlayers().get(id);
+            if(player != null)
+                player.setDeaths(player.getDeaths()+1);
+        }
+    }
 }
