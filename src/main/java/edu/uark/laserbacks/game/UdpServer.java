@@ -15,13 +15,13 @@ import java.nio.ByteBuffer;
 public class UdpServer extends Thread {
     private final DatagramSocket incomingSocket;
     private final DatagramSocket outgoingSocket;
-    private final Game game;
+    private final GameService service;
     private boolean running;
     private byte[] inbound = new byte[256];
     private byte[] outbound = new byte[256];
 
-    public UdpServer(Game game) throws SocketException {
-        this.game = game;
+    public UdpServer(GameService service) throws SocketException {
+        this.service = service;
         outgoingSocket = new DatagramSocket(7500);
         incomingSocket = new DatagramSocket(7501);
     }
@@ -49,6 +49,8 @@ public class UdpServer extends Thread {
             int playerHit = Integer.parseInt(received.substring(received.indexOf(":")+1));
 
             // Score calculations
+            service.incrementPlayerKills(sender);
+            service.incrementPlayerDeaths(playerHit);
 
             sendUdpReply(address, playerHit);
             System.out.println(received);
