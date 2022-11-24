@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+java -jar target/laser-tag-backend-0.0.1-SNAPSHOT.jar
