@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @CrossOrigin
 @RestController
-@RequestMapping(path = "/player")
+@RequestMapping(path = "/api/player")
 public class PlayerController {
     private final PlayerService service;
 

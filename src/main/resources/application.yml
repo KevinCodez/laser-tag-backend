@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: ${JDBC_DATABASE_URL}
-    username: ${JDBC_DATABASE_USERNAME}
-    password: ${JDBC_DATABASE_PASSWORD}
+    url: "jdbc:postgresql://ec2-52-21-207-163.compute-1.amazonaws.com:5432/dt1s4g2fiv6ur?sslmode=require"
+    username: "vqdumuxbrjepwv"
+    password: "25c66f25b588b8e582ccbd897b645d3e6d821378ab9123869b1a7a692b90029a"
   jpa:
     hibernate:
       ddl-auto: update
@@ -16,4 +16,4 @@ management:
       show-details: always
 springdoc:
   swagger-ui:
-    path: "/"
+    path: "/api/swagger"
