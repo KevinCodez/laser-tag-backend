@@ -1,6 +1,6 @@
 @echo off
 
-echo This script will install dependencies for the project such as: node version manager, node.js, angular-cli, and maven.
+echo This script will install dependencies for the project such as: node package manager, node.js, angular-cli, and maven.
 set /p userInput="Would you still like to continue? (Y/N): "
 
 set input=false
@@ -11,11 +11,11 @@ if %input%==true (
     exit 1
 )
 
-git submodule update --init --recursive --remote
+call git submodule update --init --recursive --remote
 cd frontend
-winget install OpenJS.NodeJS.LTS
-npm install
-npm install -g @angular/cli
-ng build
+call winget install OpenJS.NodeJS.LTS
+call npm install
+call npm install -g @angular/cli
+call ng build
 cd ..
-./mvnw.cmd clean package -DskipTests
+call mvnw.cmd clean package -DskipTests
