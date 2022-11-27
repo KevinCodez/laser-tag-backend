@@ -12,4 +12,10 @@ if %input%==true (
 )
 
 git submodule update --init --recursive --remote
-@REM cd frontend
+cd frontend
+winget install OpenJS.NodeJS.LTS
+npm install
+npm install -g @angular/cli
+ng build
+cd ..
+./mvnw.cmd clean package -DskipTests
