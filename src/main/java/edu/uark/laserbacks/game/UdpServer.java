@@ -40,7 +40,7 @@ public class UdpServer extends Thread {
             // incoming data int:int (player sending : player hit)
             String received
                     = new String(packet.getData(), 0, packet.getLength()).trim();
-            System.out.println(received);
+            log.debug("UDP Packet: {}", received);
             int sender = 0;
             int playerHit = 0;
             try {
