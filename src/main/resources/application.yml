@@ -17,3 +17,6 @@ management:
 springdoc:
   swagger-ui:
     path: "/api/swagger"
+logging:
+  level:
+    edu.uark.laserbacks: "DEBUG"

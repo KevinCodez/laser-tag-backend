@@ -15,6 +15,10 @@ public class Game {
     private List<String> killFeed;
 
     public Game() {
+        init();
+    }
+
+    public void init(){
         id = new Random().nextInt(Integer.SIZE - 1);
         killFeed = new ArrayList<>();
     }

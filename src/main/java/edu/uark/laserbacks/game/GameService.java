@@ -3,6 +3,7 @@ package edu.uark.laserbacks.game;
 import edu.uark.laserbacks.player.Player;
 import edu.uark.laserbacks.player.PlayerService;
 import lombok.Getter;
+import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,21 +21,14 @@ public class GameService {
         this.playerService = playerService;
     }
 
-    public void registerHit(Integer shooter, Integer hit) {
-        incrementPlayerKills(shooter);
-        incrementPlayerDeaths(hit);
-        game.getKillFeed().add(String.format("%s shot %s", getPlayer(shooter).getCodename(), getPlayer(hit).getCodename()));
-    }
-
-    // Score manipulation methods(these may need to be moved to the game class depending on how frontend data is received)
-    public void incrementPlayerKills(int id) {
-        Player player = getPlayer(id);
-        player.setKills(player.getKills() + 1);
-    }
-
-    public void incrementPlayerDeaths(int id) {
-        Player player = getPlayer(id);
-        player.setDeaths(player.getDeaths() + 1);
+    public void registerHit(Integer shooterId, Integer hitId) {
+        Player shooter = getPlayer(shooterId);
+        Player killed = getPlayer(hitId);
+        if(shooter != null && killed != null){
+            shooter.setKills(shooter.getKills()+1);
+            killed.setDeaths(killed.getDeaths()+1);
+            game.getKillFeed().add(String.format("%s shot %s", getPlayer(shooterId).getCodename(), getPlayer(hitId).getCodename()));
+        }
     }
 
     Player getPlayer(Integer id) {

@@ -49,6 +49,7 @@ public class GameController {
     @PostMapping
     public ResponseEntity<Game> createGame(@RequestBody CreateGameForm form) {
         if(form != null) {
+            game.init();
             game.setTeam1(service.createTeam(form.team1));
             game.setTeam2(service.createTeam(form.team2));
             return ResponseEntity.ok(game);
@@ -61,7 +62,7 @@ public class GameController {
     public ResponseEntity<Game> startGame(@PathVariable Integer id) {
         if(game.getId().equals(id)) {
             game.setRunning(true);
-            udpServer.start();
+            udpServer.run();
             return ResponseEntity.ok(game);
         } else {
             return ResponseEntity.notFound().build();

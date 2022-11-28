@@ -2,6 +2,8 @@ package edu.uark.laserbacks.game;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -13,12 +15,13 @@ import java.nio.ByteBuffer;
 
 @Slf4j
 @Service
-public class UdpServer extends Thread {
+@EnableAsync
+public class UdpServer {
     private final DatagramSocket incomingSocket;
     private final DatagramSocket outgoingSocket;
     private final GameService service;
-    private byte[] inbound = new byte[256];
-    private byte[] outbound = new byte[256];
+    private byte[] inbound;
+    private byte[] outbound = new byte[16];
 
     public UdpServer(GameService service) throws SocketException {
         this.service = service;
@@ -27,19 +30,17 @@ public class UdpServer extends Thread {
     }
 
     @SneakyThrows
+    @Async
     public void run() {
 
         while (service.getGame().isRunning()) {
+            inbound = new byte[32];
             DatagramPacket packet
                     = new DatagramPacket(inbound, inbound.length);
             incomingSocket.receive(packet);
-
             InetAddress address = packet.getAddress();
-            int port = packet.getPort();
-            packet = new DatagramPacket(inbound, inbound.length, address, port);
             // incoming data int:int (player sending : player hit)
-            String received
-                    = new String(packet.getData(), 0, packet.getLength()).trim();
+            String received = data(inbound);
             log.debug("UDP Packet: {}", received);
             int sender = 0;
             int playerHit = 0;
@@ -62,10 +63,22 @@ public class UdpServer extends Thread {
     }
 
     private void sendUdpReply(InetAddress address, int player) throws IOException {
-        inbound = ByteBuffer.allocate(Integer.SIZE/8).putInt(player).array();
+        outbound = ByteBuffer.allocate(Integer.SIZE/8).putInt(player).array();
         DatagramPacket packet
                 = new DatagramPacket(outbound, outbound.length, address, 4445);
         outgoingSocket.send(packet);
+    }
+
+    private String data(byte[] byteArray){
+        if(byteArray == null)
+            return null;
+        StringBuilder sb = new StringBuilder();
+        int i = 0;
+        while(byteArray[i] != 0){
+            sb.append((char)byteArray[i]);
+            i++;
+        }
+        return sb.toString();
     }
 
 }
